@@ -1,49 +1,654 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>My Site</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Personal Site</title>
   <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;max-width:900px;margin:3rem auto;padding:0 1rem;color:#111}
-    header{border-bottom:1px solid #eee;margin-bottom:1.5rem}
-    h1{margin:.25rem 0}
-    pre{background:#f6f8fa;padding:1rem;border-radius:6px;overflow:auto}
-    a.button{display:inline-block;background:#0366d6;color:#fff;padding:.45rem .8rem;border-radius:6px;text-decoration:none}
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+      font-family: Arial, sans-serif;
+      background: #021b2a;
+    }
+
+    body {
+      position: relative;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(169, 224, 255, 0.25), transparent 18%),
+        radial-gradient(circle at 80% 10%, rgba(192, 230, 255, 0.18), transparent 18%),
+        linear-gradient(180deg, #062d42 0%, #0f4f70 30%, #1d6d86 55%, #1d5367 100%);
+    }
+
+    .sea-scene {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(3, 27, 43, 0.22), rgba(8, 73, 91, 0.34)),
+        url("https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&cs=tinysrgb&w=2200") center / cover no-repeat;
+    }
+
+    .down-arrow {
+      position: absolute;
+      left: 50%;
+      bottom: 24px;
+      z-index: 10;
+      width: 54px;
+      height: 54px;
+      border: 1px solid rgba(255,255,255,0.7);
+      border-radius: 50%;
+      background: rgba(3, 35, 52, 0.45);
+      color: #ffffff;
+      font-size: 2rem;
+      line-height: 1;
+      transform: translateX(-50%);
+      cursor: pointer;
+      animation: arrowBounce 1.8s ease-in-out infinite;
+    }
+
+    .down-arrow:hover,
+    .down-arrow:focus-visible {
+      background: rgba(3, 35, 52, 0.75);
+      outline: 2px solid #c8f6ff;
+      outline-offset: 4px;
+    }
+
+    @keyframes arrowBounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(7px); }
+    }
+
+    .likes-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 24px;
+      background:
+        linear-gradient(rgba(3, 35, 52, 0.74), rgba(3, 25, 39, 0.88)),
+        url("https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&cs=tinysrgb&w=2200") center / cover no-repeat;
+    }
+
+    .likes-content {
+      width: min(760px, 100%);
+      padding: 42px 34px;
+      border: 1px solid rgba(200,246,255,0.35);
+      border-radius: 24px;
+      background: rgba(2, 27, 42, 0.7);
+      color: #effcff;
+      text-align: center;
+      box-shadow: 0 20px 55px rgba(0,0,0,0.28);
+    }
+
+    .likes-content h2 {
+      margin: 0 0 22px;
+      font-size: clamp(2rem, 6vw, 4rem);
+    }
+
+    .likes-content p {
+      margin: 14px 0;
+      color: #d9f7ff;
+      font-size: 1.1rem;
+      line-height: 1.75;
+    }
+
+    .projects-section {
+      min-height: 75vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 24px;
+      background: linear-gradient(180deg, #062334, #03141f);
+    }
+
+    .more-section {
+      padding: 90px 24px;
+      background: #082d3f;
+    }
+
+    .more-content {
+      width: min(900px, 100%);
+      margin: 0 auto;
+    }
+
+    .more-content h2 {
+      margin: 0 0 28px;
+      color: #effcff;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+    }
+
+    .more-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .more-item {
+      min-height: 150px;
+      padding: 22px;
+      border-left: 3px solid #8bdbe7;
+      background: rgba(0, 20, 32, 0.3);
+    }
+
+    .more-item h3 {
+      margin: 0 0 10px;
+      color: #d9f7ff;
+      font-size: 1.15rem;
+    }
+
+    .more-item p {
+      margin: 0;
+      color: #a9d2dc;
+      line-height: 1.65;
+    }
+
+    .site-footer {
+      padding: 28px 24px;
+      background: #03141f;
+      color: #7fa9b5;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .projects-content {
+      width: min(900px, 100%);
+      text-align: center;
+    }
+
+    .projects-content h2 {
+      margin: 0 0 12px;
+      color: #effcff;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+    }
+
+    .projects-content > p {
+      margin: 0 auto 30px;
+      max-width: 620px;
+      color: #b9dbe6;
+      line-height: 1.7;
+    }
+
+    .project-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .project-button {
+      min-height: 115px;
+      padding: 18px;
+      border: 1px solid rgba(200,246,255,0.25);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.06);
+      color: #e9fbff;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .project-button:hover,
+    .project-button:focus-visible {
+      background: rgba(157, 224, 239, 0.16);
+      border-color: #b9f0ff;
+      transform: translateY(-3px);
+      outline: none;
+    }
+
+    .project-button span {
+      display: block;
+      margin-top: 8px;
+      color: #8eb6c4;
+      font-size: 0.78rem;
+      font-weight: 400;
+    }
+
+    .project-status {
+      min-height: 28px;
+      margin: 24px 0 0;
+      color: #b9eaf3;
+      font-size: 0.95rem;
+    }
+
+    .sea-scene::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0) 18%),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: auto, 38px 38px, 38px 38px;
+      opacity: 0.25;
+      pointer-events: none;
+    }
+
+    .sea-scene::after {
+      content: "";
+      position: absolute;
+      inset: -20% -10% 0;
+      z-index: 1;
+      background: repeating-linear-gradient(
+        106deg,
+        transparent 0 10%,
+        rgba(210, 249, 255, 0.08) 12%,
+        transparent 19% 30%
+      );
+      opacity: 0.45;
+      transform: translateX(-8%);
+      animation: lightDrift 14s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes lightDrift {
+      from { transform: translateX(-8%) skewX(-3deg); }
+      to { transform: translateX(8%) skewX(3deg); }
+    }
+
+    .sea-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 25%, rgba(255,255,255,0.15), transparent 30%);
+      pointer-events: none;
+    }
+
+    .cover-content {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 5;
+      width: min(820px, calc(100% - 40px));
+      transform: translate(-50%, -50%);
+      color: #ffffff;
+      text-align: center;
+      text-shadow: 0 3px 22px rgba(0, 24, 40, 0.7);
+      pointer-events: none;
+    }
+
+    .cover-content h1 {
+      margin: 0;
+      font-size: clamp(2.6rem, 8vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .cover-content p {
+      margin: 20px 0 0;
+      color: #e2f9ff;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      letter-spacing: 0.04em;
+    }
+
+    .clam-button {
+      position: absolute;
+      left: 50%;
+      bottom: 7%;
+      z-index: 8;
+      width: 150px;
+      height: 78px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      transform: translateX(-50%);
+      cursor: pointer;
+      filter: drop-shadow(0 8px 14px rgba(0,0,0,0.18));
+      transition: transform 0.2s ease;
+    }
+
+    .clam-button:hover,
+    .clam-button:focus-visible {
+      transform: translateX(-50%) translateY(-6px);
+      outline: none;
+    }
+
+    .clam-shell {
+      position: absolute;
+      bottom: 0;
+      width: 72px;
+      height: 38px;
+      background: linear-gradient(180deg, #f5d2a4, #d9a470 45%, #ba7343 100%);
+      border: 2px solid rgba(110, 69, 34, 0.4);
+      border-radius: 50% 50% 48% 48% / 70% 70% 30% 30%;
+      transition: transform 0.3s ease;
+    }
+
+    .clam-shell.left { left: 8px; transform: rotate(-10deg); }
+    .clam-shell.right { right: 8px; transform: rotate(10deg); }
+
+    .clam-shell::before {
+      content: "";
+      position: absolute;
+      inset: 10px 14px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.16);
+    }
+
+    .clam-pearl {
+      position: absolute;
+      left: 50%;
+      bottom: 10px;
+      width: 24px;
+      height: 24px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #ffffff, #9cdee3 65%, #62a9b0);
+      box-shadow: 0 0 0 6px rgba(255,255,255,0.15);
+    }
+
+    .clam-button.open .clam-shell.left { transform: translateY(-18px) rotate(-18deg); }
+    .clam-button.open .clam-shell.right { transform: translateY(-18px) rotate(18deg); }
+
+    .clam-note {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      z-index: 60;
+      width: min(360px, calc(100vw - 40px));
+      padding: 24px;
+      transform: translate(-50%, -50%) scale(0.9);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 18px;
+      background: rgba(3, 35, 52, 0.95);
+      color: #effcff;
+      text-align: center;
+      line-height: 1.6;
+      box-shadow: 0 20px 55px rgba(0,0,0,0.35);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .clam-note.show {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+      pointer-events: auto;
+    }
+
+    .clam-note button {
+      margin-top: 16px;
+      padding: 9px 18px;
+      border: 0;
+      border-radius: 999px;
+      background: #c8f6ff;
+      color: #12384a;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -60px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.35);
+      background: rgba(255,255,255,0.12);
+      box-shadow: inset -10px -8px 16px rgba(255,255,255,0.08);
+      animation: rise linear infinite;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .cursor-bubble {
+      position: fixed;
+      z-index: 50;
+      width: 12px;
+      height: 12px;
+      border: 1px solid rgba(255,255,255,0.8);
+      border-radius: 50%;
+      background: rgba(214, 247, 255, 0.2);
+      pointer-events: none;
+      animation: cursorBubble 900ms ease-out forwards;
+    }
+
+    .sparkle {
+      position: absolute;
+      z-index: 3;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: 0 0 7px 2px rgba(213, 249, 255, 0.9);
+      animation: twinkle 3.6s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .sparkle::before,
+    .sparkle::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 2px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.85);
+      transform: translate(-50%, -50%);
+    }
+
+    .sparkle::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .sparkle.s1 { left: 17%; top: 24%; animation-delay: 0.2s; }
+    .sparkle.s2 { left: 35%; top: 14%; animation-delay: 1.2s; transform: scale(0.7); }
+    .sparkle.s3 { left: 64%; top: 22%; animation-delay: 2.1s; transform: scale(1.15); }
+    .sparkle.s4 { left: 82%; top: 36%; animation-delay: 0.8s; transform: scale(0.65); }
+    .sparkle.s5 { left: 12%; top: 62%; animation-delay: 2.7s; transform: scale(0.7); }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.25; }
+      50% { opacity: 1; transform: scale(1.35); }
+    }
+
+    .cursor-sparkle {
+      position: fixed;
+      z-index: 51;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: 0 0 8px 3px rgba(210, 250, 255, 0.95);
+      pointer-events: none;
+      animation: cursorSparkle 700ms ease-out forwards;
+    }
+
+    @keyframes cursorSparkle {
+      from {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      to {
+        opacity: 0;
+        transform: translate(-50%, -50%) translate(var(--spark-x), var(--spark-y)) scale(0.2);
+      }
+    }
+
+    @keyframes cursorBubble {
+      0% {
+        opacity: 0.9;
+        transform: translate(-50%, -50%) scale(0.6);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -105px) scale(1.5);
+      }
+    }
+
+    @keyframes rise {
+      0% {
+        transform: translateY(0) scale(0.8);
+        opacity: 0;
+      }
+      18% {
+        opacity: 0.75;
+      }
+      100% {
+        transform: translateY(-120vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .sea-scene {
+        background-position: 55% center;
+      }
+
+      .project-buttons {
+        grid-template-columns: 1fr;
+      }
+
+      .more-list {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>My Site</h1>
-    <p>Welcome — this is a simple homepage installed so GitHub Pages can serve your site.</p>
-  </header>
+  <div class="sea-scene">
+    <div class="sea-glow"></div>
 
-  <section>
-    <h2>Next steps to publish with GitHub Pages</h2>
-    <ol>
-      <li>Make sure this repository is <strong>public</strong>.</li>
-      <li>Go to <strong>Settings → Pages</strong> in your repository (or use the link: <code>https://github.com/sparklydinosaur310-design/My-Site-/settings/pages</code>).</li>
-      <li>Under "Build and deployment" choose <em>Deploy from a branch</em>, set the branch to <code>main</code> (or the branch you're using) and the folder to <code>/ (root)</code>, then Save.</li>
-      <li>Wait ~1–5 minutes, then refresh the Pages section to see your published URL (it will look like <code>https://sparklydinosaur310-design.github.io/My-Site-/</code>).</li>
-    </ol>
+    <span class="sparkle s1"></span>
+    <span class="sparkle s2"></span>
+    <span class="sparkle s3"></span>
+    <span class="sparkle s4"></span>
+    <span class="sparkle s5"></span>
 
-    <p>If you want me to update this homepage with custom content (an image, links, or your actual HTML), tell me what to put here or paste the HTML/CSS/JS and I'll commit it for you.</p>
+    <div class="cover-content">
+      <h1>My Personal Site</h1>
+      <p>A small corner of the internet made by me.</p>
+    </div>
 
-    <p>For a quick preview locally, open this file in a browser (index.html) or use a simple local server like:</p>
-    <pre>python -m http.server 8000</pre>
+    <div class="bubble" style="left: 8%; width: 18px; height: 18px; animation-duration: 16s; animation-delay: 0s;"></div>
+    <div class="bubble" style="left: 18%; width: 24px; height: 24px; animation-duration: 20s; animation-delay: 3s;"></div>
+    <div class="bubble" style="left: 32%; width: 14px; height: 14px; animation-duration: 18s; animation-delay: 1.5s;"></div>
+    <div class="bubble" style="left: 46%; width: 20px; height: 20px; animation-duration: 22s; animation-delay: 4s;"></div>
+    <div class="bubble" style="left: 58%; width: 16px; height: 16px; animation-duration: 19s; animation-delay: 2s;"></div>
+    <div class="bubble" style="left: 72%; width: 22px; height: 22px; animation-duration: 24s; animation-delay: 5s;"></div>
+    <div class="bubble" style="left: 84%; width: 13px; height: 13px; animation-duration: 17s; animation-delay: 1s;"></div>
+
+    <button class="clam-button" type="button" aria-label="Open my clam">
+      <span class="clam-shell left"></span>
+      <span class="clam-shell right"></span>
+      <span class="clam-pearl"></span>
+    </button>
+
+    <div class="clam-note" role="dialog" aria-live="polite">
+      I like anime, sports, and exploring with Pokemon GO.
+      <br />
+      <button type="button" class="close-clam">Close</button>
+    </div>
+
+    <button class="down-arrow" type="button" aria-label="Go underwater to see what I like">&#8595;</button>
+
+  </div>
+
+  <section class="likes-section" id="likes">
+    <div class="likes-content">
+      <h2>What I Like</h2>
+      <p>Anime is probably the thing I talk about most. Jujutsu Kaisen is one of my favorites because it has great characters and fights.</p>
+      <p>I’m also into sports. I like the competition, the energy, and just being active.</p>
+      <p>I recently started Pokemon GO, so right now I’m still figuring it out and catching whatever I find.</p>
+    </div>
   </section>
 
-  <section>
-    <h2>Troubleshooting</h2>
-    <ul>
-      <li>If you get a 404 after publishing, try clearing your browser cache or wait a few more minutes.</li>
-      <li>Ensure your homepage file is named exactly <code>index.html</code> at the repository root (it is now).</li>
-      <li>If your site uses images/CSS/JS, confirm their paths are correct relative to this file.</li>
-    </ul>
+  <section class="more-section">
+    <div class="more-content">
+      <h2>Random stuff about me</h2>
+      <div class="more-list">
+        <article class="more-item">
+          <h3>Current mood</h3>
+          <p>Usually watching something, playing a game, or looking for something new to try.</p>
+        </article>
+        <article class="more-item">
+          <h3>On repeat</h3>
+          <p>Anime clips, sports highlights, and anything that makes me want to get better.</p>
+        </article>
+        <article class="more-item">
+          <h3>Next up</h3>
+          <p>Adding actual projects here once I have something cool enough to show.</p>
+        </article>
+      </div>
+    </div>
   </section>
 
-  <footer style="margin-top:2rem;border-top:1px solid #eee;padding-top:1rem">
-    <p>Want me to: <a class="button" href="#" onclick="alert('Reply here: what do you want on the homepage?')">Customize this page</a></p>
-  </footer>
+  <section class="projects-section" id="projects">
+    <div class="projects-content">
+      <h2>Future Projects</h2>
+      <p>These spaces are ready for ideas I make later. There is nothing inside them yet.</p>
+
+      <div class="project-buttons">
+        <button class="project-button" type="button" data-project="Project One">Project One<span>Coming soon</span></button>
+        <button class="project-button" type="button" data-project="Project Two">Project Two<span>Coming soon</span></button>
+        <button class="project-button" type="button" data-project="Project Three">Project Three<span>Coming soon</span></button>
+      </div>
+
+      <p class="project-status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <footer class="site-footer">Still building this. More stuff will go here later.</footer>
+
+  <script>
+    const scene = document.querySelector('.sea-scene');
+    const clamButton = document.querySelector('.clam-button');
+    const clamNote = document.querySelector('.clam-note');
+    const closeClam = document.querySelector('.close-clam');
+    const downArrow = document.querySelector('.down-arrow');
+    const projectButtons = document.querySelectorAll('.project-button');
+    const projectStatus = document.querySelector('.project-status');
+    let lastBubbleTime = 0;
+
+    scene.addEventListener('pointermove', (event) => {
+      const now = Date.now();
+      if (now - lastBubbleTime < 90) return;
+      lastBubbleTime = now;
+
+      const bubble = document.createElement('span');
+      bubble.className = 'cursor-bubble';
+      bubble.style.left = `${event.clientX}px`;
+      bubble.style.top = `${event.clientY}px`;
+      scene.appendChild(bubble);
+      bubble.addEventListener('animationend', () => bubble.remove());
+
+      const sparkle = document.createElement('span');
+      sparkle.className = 'cursor-sparkle';
+      sparkle.style.left = `${event.clientX}px`;
+      sparkle.style.top = `${event.clientY}px`;
+      sparkle.style.setProperty('--spark-x', `${Math.random() * 36 - 18}px`);
+      sparkle.style.setProperty('--spark-y', `${Math.random() * 36 - 48}px`);
+      scene.appendChild(sparkle);
+      sparkle.addEventListener('animationend', () => sparkle.remove());
+    });
+
+    clamButton.addEventListener('click', () => {
+      clamButton.classList.toggle('open');
+      clamNote.classList.toggle('show');
+    });
+
+    closeClam.addEventListener('click', () => {
+      clamButton.classList.remove('open');
+      clamNote.classList.remove('show');
+    });
+
+    downArrow.addEventListener('click', () => {
+      document.querySelector('#likes').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    projectButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        projectStatus.textContent = `${button.dataset.project} is empty for now. I’ll add something here later.`;
+      });
+    });
+
+  </script>
 </body>
 </html>
