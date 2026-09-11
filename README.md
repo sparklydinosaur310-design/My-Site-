@@ -9,7 +9,7 @@ My very first project on the internet. I built this website from scratch to prac
 
 ## 📷 Preview
 <!-- Take a quick screenshot of your home page, upload it here, and replace this link! -->
-![Website Preview](preview.png)
+![Website Preview](preview.png.png)
 
 ---
 
