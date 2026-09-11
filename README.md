@@ -26,18 +26,5 @@ My very first project on the internet. I built this website from scratch to prac
 
 ---
 
-## 💻 How to Run it Locally
-
-Since this is a static site, you don't need to install anything to run it.
-
-1. **Clone the repo:**
-   ```bash
-   git clone https://github.com
-   ```
-2. **Open the project:**
-   Navigate into the folder and double-click `index.html` to open it instantly in any web browser.
-
----
-
 ## 💡 About this Project
 This is my absolute first time coding. I used AI as a coding assistant to help me learn the core concepts, fix broken layouts, and figure out how things work, but I wrote and tested all the code myself. 
