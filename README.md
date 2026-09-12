@@ -1,6 +1,6 @@
 # My Personal Website
 
-My very first project on the internet. I built this website so that I could practise my coding skills and get better at coding and also learning more things about coding.
+My very first project on the internet. I built this website so that I could practise my coding skills and get better at coding and also learning more things about coding. In this website, you can expect to learn more about me and what sports i have learnt and what sports i am currently active in. 
 
 ## Test the site
 **[Explore the Site](https://sparklydinosaur310-design.github.io/My-Site-/)**
