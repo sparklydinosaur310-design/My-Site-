@@ -56,7 +56,15 @@
       padding: 8px 0;
       border-bottom: 1px solid #2a4a2a;
       font-size: 1.1rem;
-  } ol {
+      transition: all 0.2s ease;   /* hover happens smoothly over 0.2s */
+  }
+
+  li:hover {
+      background-color: #2a4a2a;
+      transform: translateX(8px);
+  }
+
+  ol {
       max-width: 400px;
       margin: 16px auto 0;
       font-size: 1.1rem;
