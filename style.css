@@ -2,3 +2,21 @@ body {
       background-color: #14532d;
       color: #e0e0e0;
   }
+  h1 {
+      font-size: 48px;            
+      text-align: center;       
+      color: #a8e063;
+  }
+   h2 {
+      font-size: 30px;            
+      color:#a8e063;
+      text-align: center;
+      margin-top: 40px;           
+  }
+
+  p {
+      font-size: 18px;
+      color: #e0e0e0;             
+      text-align: center;
+      margin-top: 12px;
+  }
